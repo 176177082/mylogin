@@ -1,25 +1,25 @@
 import axios from 'axios'
 import { baseURL } from '../config'
 import { Message } from 'element-ui'
-import store from '../store'
-// import { getToken } from '@/utils/auth'
+// import store from '../store'
+import { getCookieToken } from './cookie'
 
 // create an axios instance
-const service = axios.create({
+export const axiosInstance = axios.create({
   baseURL: baseURL, // api 的 base_url
   timeout: 5000 // request timeout
 })
 
 // request interceptor
-service.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   config => {
     // debugger
     // Do something before request is sent
-    console.log(store.getters.token)
-    if (store.getters.token) {
+    console.log(getCookieToken())
+    if (getCookieToken()) {
       // 让每个请求携带token-- ['Authorization']为JWT的token
       // config.headers['Authorization'] = 'JWT ' + getToken()
-      config.headers['Authorization'] = 'JWT '
+      config.headers['Authorization'] = 'JWT ' + getCookieToken()
     }
     return config
   },
@@ -31,7 +31,7 @@ service.interceptors.request.use(
 )
 
 // response interceptor
-service.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   response => response,
   error => {
     console.log('err' + error) // for debug
@@ -43,5 +43,3 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
-export default service

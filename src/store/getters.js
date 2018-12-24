@@ -18,4 +18,5 @@ const getters = {
 }
 export default getters
 
-// 类似组件的计算属性
+// 类似组件的计算属性s
+// 如果没计算为什么要用这么多的getter

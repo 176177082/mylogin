@@ -1,13 +1,32 @@
-import request from '../libs/axios'
+import { axiosInstance } from '../libs/axios'
+//
+// export function axiosLogin ({ username, password }) {
+//   const data = {
+//     username,
+//     password
+//   }
+//   return axiosInstance({
+//     url: '/login/',
+//     method: 'post',
+//     data
+//   })
+// }
 
-export function login (username, password) {
+export const axiosLogin = ({ username, password }) => {
   const data = {
     username,
     password
   }
-  return request({
+  return axiosInstance({
     url: '/login/',
-    method: 'post',
-    data
+    data,
+    method: 'post'
+  })
+}
+
+export const axiosGetUserInfo = () => {
+  return axiosInstance({
+    url: '/user/',
+    method: 'get'
   })
 }
