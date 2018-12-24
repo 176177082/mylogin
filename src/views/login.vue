@@ -8,12 +8,15 @@
       <el-input placeholder="密码" suffix-icon="el-icon-date" type="password" v-model="form.password" style="width: 20%" ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" v-on:click="login" style="width: 20%" >登录</el-button>
+      <el-button type="primary" v-on:click="handlelogin" style="width: 20%" >登录</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
+  import { login } from '../api/user'
+  // import axios from 'axios'
+
   export default {
     data () {
       return {
@@ -25,16 +28,22 @@
       }
     },
     methods: {
-      login () {
+      handlelogin () {
         console.log(this.form.username)
         console.log(this.form.password)
         console.log(process.env.NODE_ENV === 'production'
           ? 'http://production.com'
           : 'http://localhost:3000')
         console.log('submit!')
+        login(this.form.username, this.form.password).then(res => {
+          console.log(res)
+          this.$router.push({
+            name: 'home'
+          })
+        })
+      }
       }
     }
-  }
 
 </script>
 

@@ -1,11 +1,10 @@
 const state = {
   //  11
-  username: 'sss'
-
+  username: 'sss',
   user: '',
   status: '',
   code: '',
-  token: getToken(),
+  token: '',
   name: '',
   avatar: '',
   introduction: '',
