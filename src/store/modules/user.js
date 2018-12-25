@@ -4,7 +4,8 @@ import { setCookieToken } from '../../libs/cookie'
 const state = {
   //  11
   username: '',
-  token: ''
+  token: '',
+  roles: []
 }
 
 const mutations = {
@@ -15,6 +16,9 @@ const mutations = {
   },
   SET_USERNAME: (state, username) => {
     state.username = username
+  },
+  SET_ROLES: (state, roles) => {
+    state.roles = roles
   }
 }
 
@@ -39,6 +43,16 @@ const actions = {
     return new Promise((resolve, reject) => {
       axiosGetUserInfo().then(response => {
         console.log(response)
+        const data = response.data
+        const roles = []
+        if (data[0].isadmin === true) {
+          roles.push('admin')
+        } else {
+          roles.push('mapper')
+        }
+        commit('SET_ROLES', roles)
+        // 现在返回值中没有username
+        commit('SET_USERNAME', data.username)
       }).catch(error => {
         reject(error)
       })
