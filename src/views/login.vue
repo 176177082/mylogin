@@ -19,6 +19,7 @@
   export default {
     data () {
       return {
+        // root root12345
         loginForm: {
           username: '',
           password: ''
@@ -47,6 +48,9 @@
 
 </script>
 
-<style scoped>
+<style rel="stylesheet/scss" lang="scss" scoped>
+  $bg:#2d3a4b;
+  $dark_gray:#889aa4;
+  $light_gray:#eee;
 
 </style>

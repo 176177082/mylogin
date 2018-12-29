@@ -1,6 +1,16 @@
 <template>
-  <div class="hello">
-    <el-menu default-active="1-4-1"  @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+  <el-scrollbar wrap-class="scrollbar-wrapper">
+    <el-menu
+      default-active="1-4-1"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      :collapse="isCollapse"
+      mode="vertical"
+      background-color="#304156"
+      text-color="#bfcbd9"
+      active-text-color="#409EFF"
+    >
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -32,30 +42,23 @@
         <span slot="title">导航四</span>
       </el-menu-item>
     </el-menu>
-  </div>
+  </el-scrollbar>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      isCollapse: true
-    }
-  },
-  methods: {
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
+  export default {
+    name: 'index',
+    data () {
+      return {
+        isCollapse: true
+      }
     }
   }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>

@@ -1,5 +1,5 @@
 import Home from '@/views/Home.vue'
-import LayOut from '../views/layout/LayOut'
+import LayOut from '../views/layout/Layout'
 // 路由匹配有顺序，如果有重复，自上而下，先匹配到先用
 export default [
   {
