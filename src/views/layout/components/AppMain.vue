@@ -1,12 +1,19 @@
 <template>
-  <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <!-- or name="fade" -->
-      <!-- <router-view :key="key"></router-view> -->
+  <el-main>
+    <el-table :data="tableData">
+      <el-table-column prop="date" label="日期" width="140">
+      </el-table-column>
+      <el-table-column prop="name" label="姓名" width="120">
+      </el-table-column>
+      <el-table-column prop="address" label="地址">
+      </el-table-column>
+    </el-table>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
       <router-view/>
-    </transition>
-  </section>
-
+    </div>
+  </el-main>
 </template>
 
 <script>
@@ -16,10 +23,5 @@
 </script>
 
 <style scoped>
-  .app-main {
-    /*50 = navbar  */
-    min-height: calc(100vh - 50px);
-    position: relative;
-    overflow: hidden;
-  }
+
 </style>

@@ -1,24 +1,10 @@
 <template>
-  <el-menu class="navbar" mode="horizontal">
-    <el-dropdown class="avatar-container" trigger="click">
-      <div class="avatar-wrapper">
-        <img src="@/assets/logo.png" class="user-avatar">
-        <i class="el-icon-caret-bottom"/>
-      </div>
-      <el-dropdown-menu slot="dropdown" class="user-dropdown">
-        <router-link class="inlineBlock" to="/">
-          <el-dropdown-item>
-            Home
-          </el-dropdown-item>
-        </router-link>
-        <el-dropdown-item divided>
-          <span style="display:block;" @click="logout">LogOut</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+  <el-header style="text-align: right; font-size: 12px">
+    <el-dropdown>
+      <i class="el-icon-setting" ></i>
     </el-dropdown>
-
-  </el-menu>
-
+    <span>用户名</span>
+  </el-header>
 </template>
 
 <script>
@@ -27,39 +13,11 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-  .navbar {
-    height: 50px;
-    line-height: 50px;
-    border-radius: 0px !important;
-    .screenfull {
-      position: absolute;
-      right: 90px;
-      top: 16px;
-      color: red;
-    }
-    .avatar-container {
-      height: 50px;
-      display: inline-block;
-      position: absolute;
-      right: 35px;
-      .avatar-wrapper {
-        cursor: pointer;
-        margin-top: 5px;
-        position: relative;
-        line-height: initial;
-        .user-avatar {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
-        .el-icon-caret-bottom {
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
-        }
-      }
-    }
+<style scoped>
+  .el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
   }
+
 </style>

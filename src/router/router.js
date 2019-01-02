@@ -1,5 +1,5 @@
 import Home from '@/views/Home.vue'
-import LayOut from '../views/layout/Layout'
+import LayOut from '../views/layout/LayOut'
 // 路由匹配有顺序，如果有重复，自上而下，先匹配到先用
 export default [
   {
@@ -17,6 +17,14 @@ export default [
     // beforeEnter: (to, from, next) => {
     //   if (from.name === 'about') alert('这是从about来的')
     //   else alert('这不是从about来的')
+  },
+  {
+    path: '/about111',
+    name: 'about',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
     path: '/login',
@@ -40,6 +48,14 @@ export default [
         name: 'Tree',
         component: () => import('../views/tree/Tree'),
         meta: { title: 'Tree', icon: 'tree' }
+      },
+      {
+        path: '/about',
+       component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
+      {
+        path: '/about1',
+        component: () => import(/* webpackChunkName: "about" */ '../views/About1.vue')
       }
     ]
   }
