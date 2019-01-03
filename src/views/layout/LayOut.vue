@@ -2,12 +2,11 @@
   <div>
     <el-container>
       <sidebar/>
-      <div>
       <el-container direction="vertical">
         <navbar/>
         <app-main/>
       </el-container>
-      </div>
+
     </el-container>
   </div>
 </template>
