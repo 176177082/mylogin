@@ -28,7 +28,7 @@
     background-color: rgb(48, 65, 86);
     color: #333;
     bottom: 0;
-
+    height: 100%;
   }
 
 </style>
