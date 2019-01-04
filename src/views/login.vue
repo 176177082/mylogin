@@ -39,7 +39,7 @@
           console.log(res)
           this.vuexGetUserInfo()
           this.$router.push({
-            name: 'Taskpackage'
+            name: 'home'
           })
         })
       }

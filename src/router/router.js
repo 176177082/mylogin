@@ -1,67 +1,46 @@
-import Home from '@/views/Home.vue'
-import LayOut from '../views/layout/LayOut'
 // 路由匹配有顺序，如果有重复，自上而下，先匹配到先用
 export default [
   {
     path: '/',
-    // 别名，
-    alias: '/home_page',
-    name: 'home',
-    component: Home,
-    // 路由函数模式传参
-    props: route => ({
-        food: route.query.food
-      }
-    )
-    // 路由独享
-    // beforeEnter: (to, from, next) => {
-    //   if (from.name === 'about') alert('这是从about来的')
-    //   else alert('这不是从about来的')
+    redirect: '/taskpackagelist'
   },
   {
-    path: '/about111',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/',
+    name: 'home',
+    component: () => import('../components/Home'),
+    meta: { title: '自述文件' },
+    children: [
+      {
+        path: '/taskpackagelist',
+        component: () => import('../views/TaskpackageList'),
+        meta: { title: '任务包列表' }
+      },
+      {
+        path: '/taskpackagepartition',
+        component: () => import('../views/TaskpackagePartition'),
+        meta: { title: '任务包划分' }
+      },
+      {
+        path: '/404',
+        component: () => import('../views/404'),
+        meta: { title: '404' }
+      },
+      {
+        path: '/403',
+        component: () => import('../views/403'),
+        meta: { title: '403' }
+      }
+    ]
   },
   {
     path: '/login',
-    component: () => import('../views/login')
+    name: 'login',
+    component: () => import('../views/login'),
+    meta: { title: '登录' }
   },
   {
-    path: '/taskpackage',
-    component: LayOut,
-    // redirect: '/example/table',
-    name: 'Taskpackage',
-    meta: { title: 'Taskpackage', icon: 'Taskpackage' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('../views/table/Table'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('../views/tree/Tree'),
-        meta: { title: 'Tree', icon: 'tree' }
-      },
-      {
-        path: '/about',
-       component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-      },
-      {
-        path: '/about1',
-        component: () => import(/* webpackChunkName: "about" */ '../views/About1.vue')
-      }
-    ]
+    path: '*',
+    redirect: '/404'
   }
-  // {
-  //   path: '/taskpackage',
-  //   name: 'taskpackage',
-  //   component: () => import('../views/taskpackage')
-  // }
+
 ]
