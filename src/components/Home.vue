@@ -2,11 +2,18 @@
   <el-container class="mycontainer">
         <el-aside width="200px">
           <el-menu router background-color="#324157" text-color="#bfcbd9" active-text-color="#20a0ff">
-            <el-submenu >
-              <template slot="title"><i class="el-icon-message"></i>导航一</template>
-              <el-menu-item index="/about" >选项1</el-menu-item>
-              <el-menu-item index="/about1" >选项11</el-menu-item>
-            </el-submenu>
+            <el-menu-item index="/taskpackagelist">
+              <font-awesome-icon icon="home" size="lg"></font-awesome-icon>
+              <span slot="title"> 主页</span>
+            </el-menu-item>
+            <el-menu-item index="/taskpackagelist">
+              <font-awesome-icon :icon="['far', 'list-alt']" size="lg" />
+              <span slot="title"> 任务包列表</span>
+            </el-menu-item>
+            <el-menu-item index="/taskpackagepartition">
+              <font-awesome-icon icon="clipboard-list" size="lg"/>
+              <span slot="title"> 任务包划分</span>
+            </el-menu-item>
           </el-menu>
         </el-aside>
         <el-container>
@@ -30,14 +37,10 @@
               <el-table-column prop="address" label="地址">
               </el-table-column>
             </el-table>
-            <div id="nav">
-              <router-link to="/">Home</router-link>
-              <router-link to="/about">About</router-link>
-              <router-view/>
-            </div>
+            <router-view></router-view>
           </el-main>
         </el-container>
-      </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -58,9 +61,17 @@
   .el-aside {
     background-color: rgb(48, 65, 86);
     color: #333;
-    text-align: center;
     line-height: 100%;
 
+  }
+
+  .el-m{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    bottom:0;
+    overflow-y: scroll;
   }
   .el-main {
     background-color: #E9EEF3;

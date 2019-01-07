@@ -1,20 +1,20 @@
 <template>
   <div class="login-wrap">
     <div class="ms-login">
-      <div class="ms-title">后台管理系统</div>
-      <el-form ref="form" v-bind:model="loginForm" v-bind:rules="rules" label-width="0px" class="ms-content">
+      <div class="ms-title">辅助生产系统</div>
+      <el-form ref="loginForm" v-bind:model="loginForm" v-bind:rules="rules" label-width="0px" class="ms-content">
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" placeholder="用户名">
             <el-button slot="prepend" icon="el-icon-date"></el-button>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" placeholder="密 码" v-model="loginForm.password" v-on:keyup.enter.native="handlelogin('form')">
+          <el-input type="password" placeholder="密 码" v-model="loginForm.password" v-on:keyup.enter.native="handlelogin('loginForm')">
             <el-button slot="prepend" icon="el-icon-date"></el-button>
           </el-input>
         </el-form-item>
         <div class="login-btn">
-          <el-button type="primary" v-on:click="handlelogin(form)">登录</el-button>
+          <el-button type="primary" v-on:click="handlelogin('loginForm')">登录</el-button>
         </div>
       </el-form>
     </div>
@@ -29,8 +29,8 @@
       return {
         // root root12345
         loginForm: {
-          username: '',
-          password: ''
+          username: 'root',
+          password: 'root12345'
 
         },
         rules: {
@@ -68,7 +68,6 @@
       }
     }
   }
-
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

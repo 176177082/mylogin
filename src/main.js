@@ -5,6 +5,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { getCookieToken } from './libs/cookie'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText }
+  from '@fortawesome/vue-fontawesome'
+
+library.add(fas, far, fab)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-layers', FontAwesomeLayers)
+Vue.component('font-awesome-layers-text', FontAwesomeLayersText)
 
 // import '@/styles/index.scss'
 
@@ -24,13 +36,16 @@ router.beforeEach((to, from, next) => {
   } else if (!token && to.name === 'login') {
     // 未登陆且要跳转的页面是登录页
     next() // 跳转
-  } else if (token && to.name === 'login') {
-    // 已登录且要跳转的页面是登录页
-    next({
-      name: 'home' // 跳转到homeName页
-    })
   } else {
-    console.log('未写权限判断的路由')
+    if (token && to.name === 'login') {
+      // 已登录且要跳转的页面是登录页
+      next({
+        name: 'home' // 跳转到homeName页
+      })
+    } else {
+      next()
+      console.log('未写权限判断的路由')
+    }
   }
 })
 
