@@ -2,8 +2,12 @@
 export default [
   {
     path: '/',
-    redirect: '/taskpackagelist'
+    redirect: '/about1'
   },
+  // {
+  //   path: '/about1',
+  //   component: () => import('../views/About1')
+  // },
   {
     path: '/',
     name: 'home',

@@ -4,6 +4,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import NProgress from 'nprogress' // Progress 进度条
+import 'nprogress/nprogress.css'// Progress 进度条样式
 import { getCookieToken } from './libs/cookie'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -27,6 +29,7 @@ Vue.use(ElementUI)
 // 使用钩子函数对路由进行权限跳转
 
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   const token = getCookieToken()
   if (!token && to.name !== 'login') {
     // 未登录且要跳转的页面不是登录页
@@ -45,6 +48,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
       console.log('未写权限判断的路由')
+      NProgress.done()
     }
   }
 })
